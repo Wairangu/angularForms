@@ -15,7 +15,10 @@
             ngModel name="username"
             required>
           </div>
-          <button class="btn btn-default" type="button">Suggest an Username</button>
+          <button 
+            class="btn btn-default" 
+            type="button"
+            (click)="suggestUsername()">Suggest an Username</button>
           <div class="form-group">
             <label for="email">Mail</label>
             <input type="email" 
@@ -31,10 +34,10 @@
         <p  class="help-block" *ngIf="!userDataChk.valid && userDataChk.touched" > User data is invalid.</p>
         <!-- Secret question Section -->
         <div class="form-group" 
-          ngModelGroup="secretQuestion">
+          >
           <label for="secret">Secret Questions</label>
           <select id="secret" class="form-control" [ngModel]="defaultQuestion" 
-          name="secret" required>
+          name="secret">
             <option value="pet">Your first Pet?</option>
             <option value="teacher">Your first teacher?</option>
             
@@ -45,7 +48,6 @@
             name="questionAnswer" 
             rows="1"
             class ="form-control"
-            required
             [(ngModel)]="answer"
             >
           </textarea>
@@ -62,9 +64,6 @@
             required>
             {{ gender }}
           </label>
-          
-
-
         </div>
         <button class="btn btn-primary"
         [disabled]="!f.valid"

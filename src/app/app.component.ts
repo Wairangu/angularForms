@@ -24,4 +24,23 @@ onSubmit() {
   console.log(this.signupForm);
 
 }
+suggestUsername(){
+  const suggestedName = 'Superuser';
+  // this.signupForm.setValue({  //not best approcah:- replaces all the values woth default
+  //   userData: {
+  //     username: suggestedName,
+  //     email: ''
+  //   },
+  //   secret: 'pet',
+  //   questionAnswer: '',
+  //   gender: 'male'
+  // })
+  //better approcah that patches values selected
+  this.signupForm.form.patchValue({
+    userData: {
+      username: suggestedName
+    }
+  })
+}
+
 }
