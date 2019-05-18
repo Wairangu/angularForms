@@ -10,6 +10,7 @@ export class AppComponent {
   title = 'Forms';
   defaultQuestion: string = 'teacher';
   answer: string = '';
+  genders = ['male', 'female'];
 
   //using local ref
   // onSubmit(form: NgForm) {
