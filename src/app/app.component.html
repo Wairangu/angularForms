@@ -4,7 +4,9 @@
       <form (ngSubmit)="onSubmit(f)" #f="ngForm">
         <div 
         id="user-data"
-         ngModelGroup="userData">  <!--Add ngModelGroup to group values received from this div -->
+         ngModelGroup="userData"
+         #userDataChk="ngModelGroup">
+                                               <!--Add ngModelGroup to group values received from this div -->
           <div class="form-group">
             <label for="username">Username</label>
             <input type="text" 
@@ -26,7 +28,10 @@
             <span class="help-block" *ngIf="!emailChk.valid && emailChk.touched" >Please enter a valid email address.</span>
           </div>
         </div>
-        <div class="form-group">
+        <p  class="help-block" *ngIf="!userDataChk.valid && userDataChk.touched" > User data is invalid.</p>
+        <!-- Secret question Section -->
+        <div class="form-group" 
+          ngModelGroup="secretQuestion">
           <label for="secret">Secret Questions</label>
           <select id="secret" class="form-control" [ngModel]="defaultQuestion" 
           name="secret" required>
@@ -39,6 +44,7 @@
             name="questionAnswer" 
             rows="1"
             class ="form-control"
+            required
             [(ngModel)]="answer">
           </textarea>
         </div>
