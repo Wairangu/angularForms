@@ -8,6 +8,8 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
   title = 'Forms';
+  defaultQuestion: string = 'teacher';
+  answer: string = '';
 
   //using local ref
   // onSubmit(form: NgForm) {
