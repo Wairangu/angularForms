@@ -33,22 +33,25 @@
         </div>
         <p  class="help-block" *ngIf="!userDataChk.valid && userDataChk.touched" > User data is invalid.</p>
         <!-- Secret question Section -->
+      
         <div class="form-group" 
-          >
+          ngModelGroup="secretData">
           <label for="secret">Secret Questions</label>
-          <select id="secret" class="form-control" [ngModel]="defaultQuestion" 
+          <select id="secret" class="form-control" 
+          [ngModel]="defaultQuestion" 
           name="secret">
             <option value="pet">Your first Pet?</option>
             <option value="teacher">Your first teacher?</option>
             
           </select>
-        </div>
+        
         <div class="form-group">
           <textarea 
             name="questionAnswer" 
             rows="1"
             class ="form-control"
             [(ngModel)]="answer"
+            required
             >
           </textarea>
         </div>
@@ -69,7 +72,24 @@
         [disabled]="!f.valid"
         type="submit">
         Submit</button>
+        <span class="col-xs-12"> </span>
+        <button class="btn btn-primary"
+        (click)="onReset()" >
+        Reset</button>
+      </div>
       </form>
+    </div>
+  </div>
+  <hr>
+  <div class="row" *ngIf="formSubmitted">
+    <div class="col-xs-12">
+      <h3>Your Form Data</h3>
+      <p>Username: {{ user.username }} </p>
+      <p>E-Mail: {{ user.email }} </p>
+      <p>Secret Question: {{ user.secretQuestion }} </p>
+      <p>Secret Question Answer: {{ user.secretAnswer }} </p>
+      <p>Gender: {{ user.gender }} </p>
+
     </div>
   </div>
 </div>

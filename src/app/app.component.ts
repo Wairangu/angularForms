@@ -11,6 +11,15 @@ export class AppComponent {
   defaultQuestion: string = 'teacher';
   answer: string = '';
   genders = ['male', 'female'];
+  formSubmitted = false;
+
+  user = {
+    username: '',
+    email: '',
+    secretQuestion: '',
+    secretAnswer: '',
+    gender: ''
+  }
 
   //using local ref
   // onSubmit(form: NgForm) {
@@ -22,6 +31,13 @@ export class AppComponent {
 onSubmit() {
   console.log('Submitted usng @ViewChild');
   console.log(this.signupForm);
+  this.formSubmitted = true;
+  this.user.username = this.signupForm.form.value.userData.username;
+  this.user.email = this.signupForm.form.value.userData.email;
+  this.user.secretQuestion = this.signupForm.form.value.secretData.secret;
+  this.user.secretAnswer = this.signupForm.form.value.secretData.questionAnswer;
+  this.user.gender = this.signupForm.form.value.secretData.gender;
+
 
 }
 suggestUsername(){
@@ -41,6 +57,9 @@ suggestUsername(){
       username: suggestedName
     }
   })
+}
+onReset() {
+  this.signupForm.reset();
 }
 
 }
